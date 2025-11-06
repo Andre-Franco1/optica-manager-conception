@@ -76,10 +76,10 @@ enum LensType {
 }
 
 Client      "1"          o--      "0..*"    Sale
-Sale        "1"          o-l-     "1..*"    SaleItem
-SaleItem    "1"          o-->     "1"       Product
-Sale        "1"          -->      "0..1"    Invoice
-Sale        "1"          -d-      "0..1"    ServiceOrder
+Sale        "1"          o-d-     "1..*"    SaleItem
+SaleItem    "1"          o-r->     "1"       Product
+Sale        "1"          -u->      "0..1"    Invoice
+Sale        "1"          -u-      "0..1"    ServiceOrder
 User        "1"          o--      "0..*"    Sale
 Client      "1"          o-->     "0..*"    Prescription
 SaleItem    "0..1"       -u->     "0..1"    LensType
