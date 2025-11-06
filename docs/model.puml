@@ -1,0 +1,87 @@
+@startuml "model"
+
+class Client {
+    id: Long
+    name: String
+    phone: String
+    dateOfBirth: Date
+}
+
+class User {
+    id: Integer
+    name: String
+    email: String
+    password: String
+    role: ADMIN | OPERATOR
+    active: Boolean
+}
+
+class Product {
+    id: Long
+    code: String
+    name: String
+    category: String
+    costPrice: Decimal
+    salePrice: Decimal
+    stockQuantity: Integer
+}
+
+class Sale {
+    id: Long
+    issueDate: Date
+    deliveryDate: Date
+    totalAmount: Decimal
+    paymentMethod: CASH | CARD | PIX
+    description: String
+    status: IN_PROGRESS | DELIVERED
+}
+
+class SaleItem {
+    id: Long
+    quantity: Integer
+    unitPrice: Decimal
+    subtotal: Decimal
+}
+
+class Invoice {
+    id: Long
+    number: Long
+    serial: String
+}
+
+class ServiceOrder {
+    id: Long
+    pdfPath: String
+}
+
+class Prescription {
+    id: Long
+    date: Date
+    od_sphere: Float
+    od_cylinder: Float
+    od_axis: Integer
+    os_sphere: Float
+    os_cylinder: Float
+    os_axis: Integer
+    addition: Float
+    notes: String
+}
+
+enum LensType {
+    MONOFOCAL
+    BIFOCAL
+    PROGRESSIVE
+    PHOTOCHROMIC
+    ANTIREFLECTIVE
+}
+
+Client      "1"          o--      "0..*"    Sale
+Sale        "1"          o-l-     "1..*"    SaleItem
+SaleItem    "1"          o-->     "1"       Product
+Sale        "1"          -->      "0..1"    Invoice
+Sale        "1"          -d-      "0..1"    ServiceOrder
+User        "1"          o--      "0..*"    Sale
+Client      "1"          o-->     "0..*"    Prescription
+SaleItem    "0..1"       -u->     "0..1"    LensType
+
+@enduml
