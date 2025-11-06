@@ -94,3 +94,7 @@
 ## Future Enhancements (Beyond MVP):
     - Inventory transfer between stores.
     - Vendor performance reports and sales analytics.
+
+## Diagrams
+### Use Cases
+![Use Cases](out/docs/use-cases/use-cases.png)

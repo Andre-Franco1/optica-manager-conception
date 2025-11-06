@@ -1,0 +1,31 @@
+@startuml "use-cases-optica-manager"
+left to right direction
+
+actor "Operator" as o
+actor "Admin" as a
+
+package "OpticaManager" {
+    usecase "Manage Client" as UC1
+    usecase "Create Sale" as UC2
+    usecase "Generate Service Order (PDF)" as UC3
+    usecase "Issue Invoice" as UC4
+    usecase "Manage Inventory" as UC5
+    usecase "Update Inventory Automatically" as UC6
+    usecase "Manage Users" as UC7
+    usecase "View Sales History (with Client Filter)" as UC8
+}
+
+o <|-right- a
+
+o --> UC1
+o --> UC2
+o --> UC8
+
+a --> UC5
+a --> UC7
+
+UC2 --> UC3 : <<includes>>
+UC2 --> UC4 : <<includes>>
+UC2 --> UC6 : <<extends>>
+
+@enduml
