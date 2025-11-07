@@ -1,0 +1,64 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">CPF</th>
+            <th scope="col">Data</th>
+            <th scope="col">Valor total</th>
+            <th scope="col">Metodo de pagamento</th>
+            <th scope="col">Status</th>
+            <th scope="col">Ações</th>
+        </tr>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col"><input class="form-control text-center" placeholder="Filtrar por nome"></th>
+            <th scope="col"><input class="form-control text-center" placeholder="Filtrar por cpf"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>João da Silva</td>
+            <td>054.270.120-01</td>
+            <td>01/11/2025</td>
+            <td>R$ 370,00</td>
+            <td>PIX</td>
+            <td>Pendente</td>
+            <td>
+                <img src="/prototype/components/table-sale/svg/file-earmark-text-fill.svg" width="20" height="20" alt="next">
+                <img src="/prototype/components/table-sale/svg/file-earmark-medical-fill.svg" width="20" height="20" alt="next">
+                <img src="/prototype/components/table-sale/svg/info-circle-fill.svg" width="20" height="20" alt="next">
+                <img src="/prototype/components/table-sale/svg/trash3-fill.svg" width="20" height="20" alt="next">
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Carlos Martins</td>
+            <td>808.027.210-79</td>
+            <td>06/11/2025</td>
+            <td>R$ 370,00</td>
+            <td>PIX</td>
+            <td>Pendente</td>
+            <td>
+                <img src="/prototype/components/table-sale/svg/file-earmark-text-fill.svg" width="20" height="20" alt="next">
+                <img src="/prototype/components/table-sale/svg/file-earmark-medical-fill.svg" width="20" height="20" alt="next">
+                <img src="/prototype/components/table-sale/svg/info-circle-fill.svg" width="20" height="20" alt="next">
+                <img src="/prototype/components/table-sale/svg/trash3-fill.svg" width="20" height="20" alt="next">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="paginator"></div>
+
+<script>
+        $(function () {
+            $("#paginator").load("../components/paginator/paginator.html");
+        })
+    </script>

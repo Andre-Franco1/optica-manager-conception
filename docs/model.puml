@@ -3,6 +3,7 @@
 class Client {
     id: Long
     name: String
+    cpf: String
     phone: String
     dateOfBirth: Date
 }
@@ -32,6 +33,7 @@ class Sale {
     deliveryDate: Date
     totalAmount: Decimal
     paymentMethod: CASH | CARD | PIX
+    installments: Integer
     description: String
     status: IN_PROGRESS | DELIVERED
 }

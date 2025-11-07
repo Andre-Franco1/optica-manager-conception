@@ -1,0 +1,75 @@
+<form>
+    <div class="row">
+        <div class="col-10 m-auto">
+            <div class="mb-3">
+                <label for="name" class="form-label">Nome: </label>
+                <input type="text" class="form-control" id="name" placeholder="Nome">
+                <div class="text-danger text-start">
+                    <small><sup>*</sup>Nome é obrigatório</small>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="paymentMethod" class="form-label">Método de pagamento:</label>
+                        <select class="form-select" id="paymentMethod" aria-label="Selecione o método de pagamento">
+                            <option selected>Selecione o método de pagamento</option>
+                            <option value="1">Dinheiro</option>
+                            <option value="2">Cartão</option>
+                            <option value="3">PIX</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="saleDate" class="form-label">Data da Venda:</label>
+                        <input type="date" class="form-control" id="saleDate">
+                    </div>
+                </div>
+            </div>
+
+            <div id="collapse-product"></div>
+
+            <div class="row">
+                <div class="col-4">
+                    <div class="mb-3">
+                        <label for="deliveryDate" class="form-label">Estimativa de Entrega:</label>
+                        <input type="date" class="form-control" id="deliveryDate">
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="mb-3">
+                        <label for="discount" class="form-label">% de Desconto:</label>
+                        <input type="number" class="form-control" id="discount" placeholder="0" min="0" max="100" step="0.01">
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="mb-3">
+                        <label for="totalValue" class="form-label">Valor Total (R$):</label>
+                        <input type="number" class="form-control" id="totalValue" placeholder="0,00" min="0" step="0.01">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Descrição:</label>
+                <textarea class="form-control" id="description" rows="3" placeholder="Observações sobre a venda"></textarea>
+            </div>
+
+            <div class="mb-3 text-end">
+                <a href="/prototype/pages/sales.html" class="btn btn-secondary me-1">Cancelar</a>
+                <a href="/prototype/pages/sales.html" class="btn btn-primary">Cadastrar</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    $(function () {
+        $("#collapse-product").load("../components/collapse-product/collapse-product.html");
+    })
+</script>
