@@ -21,10 +21,25 @@ class Product {
     id: Long
     code: String
     name: String
-    category: String
     costPrice: Decimal
     salePrice: Decimal
+    
+}
+
+class Frame {
+    category: String
     stockQuantity: Integer
+}
+
+class Lenses {
+}
+
+enum LensType {
+    MONOFOCAL
+    BIFOCAL
+    PROGRESSIVE
+    PHOTOCHROMIC
+    ANTIREFLECTIVE
 }
 
 class Sale {
@@ -69,21 +84,15 @@ class Prescription {
     notes: String
 }
 
-enum LensType {
-    MONOFOCAL
-    BIFOCAL
-    PROGRESSIVE
-    PHOTOCHROMIC
-    ANTIREFLECTIVE
-}
-
 Client      "1"          o--      "0..*"    Sale
 Sale        "1"          o-d-     "1..*"    SaleItem
-SaleItem    "1"          o-r->     "1"       Product
-Sale        "1"          -u->      "0..1"    Invoice
+SaleItem    "1"          o-r->    "1"       Product
+Sale        "1"          -u->     "0..1"    Invoice
 Sale        "1"          -u-      "0..1"    ServiceOrder
 User        "1"          o--      "0..*"    Sale
 Client      "1"          o-->     "0..*"    Prescription
-SaleItem    "0..1"       -u->     "0..1"    LensType
+Lenses                   -u-                LensType
+Product                  <|--               Frame
+Product                  <|--               Lenses
 
 @enduml
