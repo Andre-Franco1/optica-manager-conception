@@ -101,3 +101,6 @@
 
 ### Model
 ![Model](out/docs/model/model.png)
+
+### Endpoints
+![Endpoints](out/docs/endpoints/endpoints.png)

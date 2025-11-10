@@ -90,7 +90,7 @@ SaleItem    "1"          o-r->    "1"       Product
 Sale        "1"          -u->     "0..1"    Invoice
 Sale        "1"          -u-      "0..1"    ServiceOrder
 User        "1"          o--      "0..*"    Sale
-Client      "1"          o-->     "0..*"    Prescription
+Client      "1"          o--     "0..*"     Prescription
 Lenses                   -u-                LensType
 Product                  <|--               Frame
 Product                  <|--               Lenses
