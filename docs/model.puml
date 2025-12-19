@@ -2,10 +2,12 @@
 
 class Client {
     id: Long
-    name: String
     cpf: String
+    name: String
     phone: String
-    dateOfBirth: Date
+    sex: Sex
+    active: boolean
+    tenantId: Integer
 }
 
 class User {
@@ -13,67 +15,70 @@ class User {
     name: String
     email: String
     password: String
-    role: ADMIN | OPERATOR
-    active: Boolean
+    active: boolean
+    tenantId: Integer
+}
+
+class Role {
+    id: Integer
+    role: RoleName
 }
 
 class Product {
     id: Long
     code: String
     name: String
-    costPrice: Decimal
-    salePrice: Decimal
-    
+    costPrice: BigDecimal
+    retailPrice: BigDecimal
+    tenantId: Integer
 }
 
 class Frame {
-    category: String
+    category: FrameCategory
     stockQuantity: Integer
 }
 
 class Lenses {
-}
-
-enum LensType {
-    MONOFOCAL
-    BIFOCAL
-    PROGRESSIVE
-    PHOTOCHROMIC
-    ANTIREFLECTIVE
+    lensType: LensType
 }
 
 class Sale {
     id: Long
-    issueDate: Date
-    deliveryDate: Date
-    totalAmount: Decimal
-    paymentMethod: CASH | CARD | PIX
+    issueDate: LocalDate
+    estimatedDeliveryDate: LocalDate
+    deliveryDate: LocalDate
+    totalAmount: BigDecimal
+    paymentMethod: PaymentMethod
+    cardBrand: CardBrand
     installments: Integer
-    description: String
-    status: IN_PROGRESS | DELIVERED
+    comments: String
+    saleStatus: SaleStatus
+    tenantId: Integer
 }
 
 class SaleItem {
     id: Long
-    quantity: Integer
-    unitPrice: Decimal
-    subtotal: Decimal
+    unitPrice: BigDecimal
+    tenantId: Integer
 }
 
 class Invoice {
     id: Long
     number: Long
     serial: String
+    tenantId: Integer
 }
 
 class ServiceOrder {
     id: Long
     pdfPath: String
+    tenantId: Integer
 }
 
 class Prescription {
     id: Long
-    date: Date
+    date: LocalDate
+    ophthalmologist: Ophthalmologist
     od_sphere: Float
     od_cylinder: Float
     od_axis: Integer
@@ -82,6 +87,18 @@ class Prescription {
     os_axis: Integer
     addition: Float
     notes: String
+    tenantId: Integer
+}
+
+class Ophthalmologist {
+    name: String
+    phone: String
+}
+
+class Unit {
+    name: String
+    logo: String
+    tenantId: Integer
 }
 
 Client      "1"          o--      "0..*"    Sale
@@ -91,8 +108,9 @@ Sale        "1"          -u->     "0..1"    Invoice
 Sale        "1"          -u-      "0..1"    ServiceOrder
 User        "1"          o--      "0..*"    Sale
 Client      "1"          o--     "0..*"     Prescription
-Lenses                   -u-                LensType
 Product                  <|--               Frame
 Product                  <|--               Lenses
+User                  o-->   "0..*"  Role
+Ophthalmologist  "1"     o--     "0..*"    Prescription
 
 @enduml

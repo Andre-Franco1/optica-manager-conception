@@ -1,22 +1,30 @@
 @startmindmap "endpoints"
 * /api/v1
-    ** /inventory
+    ** /products
+        ***[#LightGreen] GET?, GET/{id}
+            ****[#LightBlue] ADMIN, OPERATOR
+
+        *** /frames
+            ****[#LightGreen] GET, GET/{id}
+                *****[#LightBlue] ADMIN, OPERATOR
+            ****[#LightGreen] POST, PUT/{id}
+                *****[#LightBlue] ADMIN
+
+        *** /lenses
+            ****[#LightGreen] GET, GET/{id}
+                *****[#LightBlue] ADMIN, OPERATOR
+            ****[#LightGreen] POST, PUT/{id}
+                *****[#LightBlue] ADMIN
+
+    ** /sales
         ***[#LightGreen] GET?, GET/{id}, POST
             ****[#LightBlue] ADMIN, OPERATOR
 
         ***[#LightGreen] PUT/{id}, DELETE/{id}
             ****[#LightBlue] ADMIN
 
-    ** /sales
-        ***[#LightGreen] GET?, GET/{id}, POST
-            ****[#LightBlue] ADMIN, OPERATOR
-
         *** /products
-            ****[#LightGreen] GET, PATCH
-                *****[#LightBlue] ADMIN, OPERATOR
-
-        *** /{id}/saleitem
-            ****[#LightGreen] POST
+            ****[#LightGreen] GET
                 *****[#LightBlue] ADMIN, OPERATOR
     
     ** /clients
@@ -37,7 +45,7 @@
                 *****[#LightBlue] ADMIN, OPERATOR
 
     ** /users
-        ***[#LightGreen] GET, GET/{id}, DELETE/{id}, PUT/{id}, POST
+        ***[#LightGreen] GET, GET/{id} DELETE/{id}, PUT/{id}, POST
             ****[#LightBlue] ADMIN
 
 @endmindmap
